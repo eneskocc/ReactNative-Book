@@ -10,8 +10,8 @@ export default function Login() {
             <View style={styles.headBackground} />
             <View>
                 <View style={styles.logo0}>
-                    <Text style={styles.logo1}>MARKET</Text>
-                    <Text style={styles.logo2}>APP  </Text>
+                    <Text style={styles.logo1}> BOOK   </Text>
+                    <Text style={styles.logo2}> APP   </Text>
                 </View>
 
                 <Text style={styles.logoDescription}>Property & Tax Survey</Text>

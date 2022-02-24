@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     backgroundColor: '#9DD6EB',
+    
+   
   },
   Contanair2: {
     paddingTop:10,

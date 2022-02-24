@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Button, Text, StyleSheet, SafeAreaView ,ScrollView} from 'react-native';
+import { View, TouchableOpacity, Button, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-
+import { Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { FontAwesome } from '@expo/vector-icons';
@@ -24,22 +25,22 @@ function Feed() {
         <Swiper />
       </View>
       <View style={styles.card}>
-        <Card name={"Dünya kalsikleri"}/>
-        <Card name={"Polisiye romanlar"}/>
-        <Card name={"Aşk romanlar"}/>
-        <Card name={"Çocuk kitapları"}/>
-        <Card name={"Yemek kitapları"}/>
+        <Card name={"Dünya kalsikleri"} />
+        <Card name={"Polisiye romanlar"} />
+        <Card name={"Aşk romanlar"} />
+        <Card name={"Çocuk kitapları"} />
+        <Card name={"Yemek kitapları"} />
       </View>
       <View style={styles.coksatan}>
-      <Text>En Çok Satanlar!</Text>
-      <ScrollView horizontal={true}>
-        <Coksatan name={"Sineklerin Tanrısı"}/>
-        <Coksatan name={"Sineklerin Tanrısı"}/>
-        <Coksatan name={"Sineklerin Tanrısı"}/>
-        <Coksatan name={"Sineklerin Tanrısı"}/>
-        <Coksatan name={"Sineklerin Tanrısı"}/>
-        <Coksatan name={"Sineklerin Tanrısı"}/>
-      </ScrollView>
+        <Text>En Çok Satanlar!</Text>
+        <ScrollView horizontal={true}>
+          <Coksatan name={"Sineklerin Tanrısı"} />
+          <Coksatan name={"Sineklerin Tanrısı"} />
+          <Coksatan name={"Sineklerin Tanrısı"} />
+          <Coksatan name={"Sineklerin Tanrısı"} />
+          <Coksatan name={"Sineklerin Tanrısı"} />
+          <Coksatan name={"Sineklerin Tanrısı"} />
+        </ScrollView>
       </View>
     </ScrollView>
 
@@ -159,12 +160,13 @@ const styles = StyleSheet.create({
     height: 200,
   },
   card: {
-    width: '100%',
-    padding: 10,
+    width:windowWidth,
     flexWrap: 'wrap',
     flexDirection: 'row',
+    paddingHorizontal:20,
+    paddingVertical:15,
     alignItems: 'center',
-    backgroundColor:'#fafafa'
+    backgroundColor: '#fafafa'
   },
   iconsAdd: {
     position: 'relative',
@@ -179,11 +181,12 @@ const styles = StyleSheet.create({
   },
   iconsAddText: {
     color: '#fafafa',
-    paddingTop: 4,
+    paddingVertical: 10,
   },
-  coksatan:{
-    backgroundColor:'#fafafa',
-    paddingHorizontal:10,
+  coksatan: {
+    backgroundColor: '#fafafa',
+    paddingHorizontal: 10,
+    paddingVertical:10,
   }
 });
 
