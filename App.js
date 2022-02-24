@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Button, Text, StyleSheet, SafeAreaView } from 'react-native';
+import { View, TouchableOpacity, Button, Text, StyleSheet, SafeAreaView ,ScrollView} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -16,20 +16,32 @@ import Card from './components/Card';
 import Login from './Screens/Login';
 
 import Basket from './Screens/Basket';
+import Coksatan from './components/Coksatan';
 function Feed() {
   return (
-    <View>
+    <ScrollView>
       <View style={styles.swiper}>
         <Swiper />
       </View>
       <View style={styles.card}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card name={"Dünya kalsikleri"}/>
+        <Card name={"Polisiye romanlar"}/>
+        <Card name={"Aşk romanlar"}/>
+        <Card name={"Çocuk kitapları"}/>
+        <Card name={"Yemek kitapları"}/>
       </View>
-    </View>
+      <View style={styles.coksatan}>
+      <Text>En Çok Satanlar!</Text>
+      <ScrollView horizontal={true}>
+        <Coksatan name={"Sineklerin Tanrısı"}/>
+        <Coksatan name={"Sineklerin Tanrısı"}/>
+        <Coksatan name={"Sineklerin Tanrısı"}/>
+        <Coksatan name={"Sineklerin Tanrısı"}/>
+        <Coksatan name={"Sineklerin Tanrısı"}/>
+        <Coksatan name={"Sineklerin Tanrısı"}/>
+      </ScrollView>
+      </View>
+    </ScrollView>
 
 
   );
@@ -152,6 +164,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor:'#fafafa'
   },
   iconsAdd: {
     position: 'relative',
@@ -167,6 +180,10 @@ const styles = StyleSheet.create({
   iconsAddText: {
     color: '#fafafa',
     paddingTop: 4,
+  },
+  coksatan:{
+    backgroundColor:'#fafafa',
+    paddingHorizontal:10,
   }
 });
 

@@ -27,6 +27,7 @@ export default function Urun(props) {
                     <Text style={styles.endText}>-</Text>
                 </TouchableOpacity>
             </View>
+            
         </View>
     )
 
