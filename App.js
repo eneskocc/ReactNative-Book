@@ -18,6 +18,7 @@ import Login from './Screens/Login';
 
 import Basket from './Screens/Basket';
 import Coksatan from './components/Coksatan';
+import BookDetay from './Screens/BookDetay'
 function Feed() {
   return (
     <ScrollView>
@@ -54,6 +55,13 @@ function Article() {
     <Basket />
   );
 }
+function Details() {
+  
+  return (
+    <BookDetay />
+  );
+}
+
 
 
 
@@ -78,7 +86,7 @@ const HomeStack = createNativeStackNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Feed} />
+      <HomeStack.Screen name="Home" component={Details} />
       <HomeStack.Screen name="Details" component={Article} />
     </HomeStack.Navigator>
   );

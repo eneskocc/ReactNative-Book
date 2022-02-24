@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
    tinyLogo: {
     width: 60,
     height: 80,
+    
   },
   text: {
     color: '#fafafa',
