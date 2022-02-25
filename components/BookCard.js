@@ -1,16 +1,21 @@
 import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
+
 export default function BookCard(props) {
+
   const navigation = useNavigation();
   function irCatalogo(){
-     navigation.navigate('Details', {} );
+    navigation.navigate('Details', {
+      props:props,
+    });
    }
+   const {img}=props;
   return (
     <TouchableOpacity style={styles.Contanair} onPress={irCatalogo}>
     <Image
       style={styles.tinyLogo}
-      source={require('../img/sineklerin-tanrisi.jpeg')}
+      source={img}
     />
     <View style={styles.Contanair2}>
       <Text style={styles.text}>{props.name}</Text>

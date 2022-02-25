@@ -20,6 +20,7 @@ import Basket from './Screens/Basket';
 import BookCard from './components/BookCard';
 import BookDetay from './Screens/BookDetay';
 import Books from './Screens/Books';
+import BestSeller from './components/BestSeller';
 function Feed() {
   return (
     <ScrollView>
@@ -35,14 +36,7 @@ function Feed() {
       </View>
       <View style={styles.coksatan}>
         <Text>En Çok Satanlar!</Text>
-        <ScrollView horizontal={true}>
-          <BookCard name={"Sineklerin Tanrısı"} />
-          <BookCard name={"Sineklerin Tanrısı"} />
-          <BookCard name={"Sineklerin Tanrısı"} />
-          <BookCard name={"Sineklerin Tanrısı"} />
-          <BookCard name={"Sineklerin Tanrısı"} />
-          <BookCard name={"Sineklerin Tanrısı"} />
-        </ScrollView>
+        <BestSeller />
       </View>
     </ScrollView>
 
@@ -56,9 +50,9 @@ function Article() {
     <Basket />
   );
 }
-function Details() {
+function Details(props) {
   return (
-    <BookDetay />
+    <BookDetay props={props}/>
   );
 }
 
@@ -93,8 +87,8 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Feed" component={Feed} />
-      <HomeStack.Screen name="Books" component={BooksScreen} />
       <HomeStack.Screen name="Details" component={Details} />
+      <HomeStack.Screen name="Books" component={BooksScreen} />
       <HomeStack.Screen name="Art" component={Article} />
     </HomeStack.Navigator>
   );

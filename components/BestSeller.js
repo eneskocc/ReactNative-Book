@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native'
+import { StyleSheet, Text, View ,ScrollView} from 'react-native'
 import React from 'react'
 import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 import BookCard from '../components/BookCard';
-const Books = () => {
+const BestSeller = () => {
     const foto = [
         {
             id: '1',
@@ -55,21 +55,17 @@ const Books = () => {
         }
     ];
     return (
-        <ScrollView>
-            <View style={styles.card}>
+        <ScrollView horizontal={true}>
                 {
                     foto.map((item, index) => (
-                        <BookCard name={item.name} img={item.src} price={item.price} />
+                        <BookCard key={item.id} name={item.name} img={item.src} price={item.price} />
                     ))
                 }
-            </View>
         </ScrollView>
-
-
     )
 }
 
-export default Books
+export default BestSeller
 
 const styles = StyleSheet.create({
     card: {
