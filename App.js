@@ -17,8 +17,9 @@ import Card from './components/Card';
 import Login from './Screens/Login';
 
 import Basket from './Screens/Basket';
-import Coksatan from './components/Coksatan';
-import BookDetay from './Screens/BookDetay'
+import BookCard from './components/BookCard';
+import BookDetay from './Screens/BookDetay';
+import Books from './Screens/Books';
 function Feed() {
   return (
     <ScrollView>
@@ -35,12 +36,12 @@ function Feed() {
       <View style={styles.coksatan}>
         <Text>En Çok Satanlar!</Text>
         <ScrollView horizontal={true}>
-          <Coksatan name={"Sineklerin Tanrısı"} />
-          <Coksatan name={"Sineklerin Tanrısı"} />
-          <Coksatan name={"Sineklerin Tanrısı"} />
-          <Coksatan name={"Sineklerin Tanrısı"} />
-          <Coksatan name={"Sineklerin Tanrısı"} />
-          <Coksatan name={"Sineklerin Tanrısı"} />
+          <BookCard name={"Sineklerin Tanrısı"} />
+          <BookCard name={"Sineklerin Tanrısı"} />
+          <BookCard name={"Sineklerin Tanrısı"} />
+          <BookCard name={"Sineklerin Tanrısı"} />
+          <BookCard name={"Sineklerin Tanrısı"} />
+          <BookCard name={"Sineklerin Tanrısı"} />
         </ScrollView>
       </View>
     </ScrollView>
@@ -56,9 +57,14 @@ function Article() {
   );
 }
 function Details() {
-  
   return (
     <BookDetay />
+  );
+}
+
+function BooksScreen() {
+  return (
+    <Books />
   );
 }
 
@@ -86,8 +92,10 @@ const HomeStack = createNativeStackNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={Details} />
-      <HomeStack.Screen name="Details" component={Article} />
+      <HomeStack.Screen name="Feed" component={Feed} />
+      <HomeStack.Screen name="Books" component={BooksScreen} />
+      <HomeStack.Screen name="Details" component={Details} />
+      <HomeStack.Screen name="Art" component={Article} />
     </HomeStack.Navigator>
   );
 }

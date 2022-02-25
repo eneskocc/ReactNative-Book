@@ -1,10 +1,13 @@
-import { Text, StyleSheet, View, Image } from 'react-native'
+import { Text, StyleSheet, View,TouchableOpacity ,Image } from 'react-native'
 import React, { Component } from 'react'
-
+import { useNavigation } from '@react-navigation/native';
 export default function Card(props) {
-
+  const navigation = useNavigation();
+  function irCatalogo(){
+     navigation.navigate('Books', {} );
+   }
   return (
-    <View style={styles.Contanair}>
+    <TouchableOpacity style={styles.Contanair} onPress={irCatalogo} >
       <Image
         style={styles.tinyLogo}
         source={require('../img/satranc.jpeg')}
@@ -13,7 +16,7 @@ export default function Card(props) {
         <Text style={styles.text}>{props.name}</Text>
       </View>
 
-    </View>
+    </TouchableOpacity>
   )
 
 }
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
    tinyLogo: {
     width: 60,
     height: 80,
-    
+
   },
   text: {
     color: '#fafafa',

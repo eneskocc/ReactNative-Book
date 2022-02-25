@@ -1,9 +1,13 @@
-import { StyleSheet, Text, View,Image } from 'react-native'
+import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
 import React from 'react'
-
-export default function Coksatan(props) {
+import { useNavigation } from '@react-navigation/native';
+export default function BookCard(props) {
+  const navigation = useNavigation();
+  function irCatalogo(){
+     navigation.navigate('Details', {} );
+   }
   return (
-    <View style={styles.Contanair}>
+    <TouchableOpacity style={styles.Contanair} onPress={irCatalogo}>
     <Image
       style={styles.tinyLogo}
       source={require('../img/sineklerin-tanrisi.jpeg')}
@@ -12,7 +16,7 @@ export default function Coksatan(props) {
       <Text style={styles.text}>{props.name}</Text>
     </View>
 
-  </View>
+  </TouchableOpacity>
   )
 }
 
