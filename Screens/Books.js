@@ -11,6 +11,7 @@ const Books = () => {
             src: require('../img/amok-kosucusu.jpeg'),
             price: 24,
             discount:45,
+            newPrice:0
         },
         {
             id: '2',
@@ -18,6 +19,7 @@ const Books = () => {
             src: require('../img/sineklerin-tanrisi.jpeg'),
             price: 20,
             discount:5,
+            newPrice:0
         },
         {
             id: '3',
@@ -25,6 +27,7 @@ const Books = () => {
             src: require('../img/satranc.jpeg'),
             price: 10,
             discount:15,
+            newPrice:0
         },
         {
             id: '4',
@@ -32,6 +35,7 @@ const Books = () => {
             src: require('../img/devlet.jpeg'),
             price: '19',
             discount:35,
+            newPrice:0
         },
         {
             id: '5',
@@ -39,6 +43,7 @@ const Books = () => {
             src: require('../img/hayvan-ciftligi.jpeg'),
             price: 12,
             discount:45,
+            newPrice:0
         },
         {
             id: '6',
@@ -46,6 +51,7 @@ const Books = () => {
             src: require('../img/satranc.jpeg'),
             price: 45,
             discount:40,
+            newPrice:0
         },
         {
             id: '7',
@@ -53,6 +59,7 @@ const Books = () => {
             src: require('../img/devlet.jpeg'),
             price: 30,
             discount:55,
+            newPrice:0
         },
         {
             id: '8',
@@ -60,6 +67,7 @@ const Books = () => {
             src: require('../img/hayvan-ciftligi.jpeg'),
             price: 69,
             discount:30,
+            newPrice:0
         }
     ];
     return (

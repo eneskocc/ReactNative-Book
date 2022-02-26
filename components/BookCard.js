@@ -8,10 +8,12 @@ export default function BookCard(props) {
   function irCatalogo() {
     navigation.navigate('Details', {
       props: props,
+      price2:newPrice
     });
   }
   const { img } = props;
-  const NewPrice = props.price-((props.price * props.discount) / 100);
+  
+  const newPrice = props.price-((props.price * props.discount) / 100);
   return (
     <TouchableOpacity style={styles.Contanair} onPress={irCatalogo}>
       <Image
@@ -25,7 +27,7 @@ export default function BookCard(props) {
         <Text style={styles.textDiscount}>%{props.discount}</Text>
         <View style={{ padding:5, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={styles.textPrice}>{props.price} TL</Text>
-          <Text style={styles.textNewPrice}>{NewPrice} TL</Text>
+          <Text style={styles.textNewPrice}>{newPrice} TL</Text>
         </View>
 
       </View>
