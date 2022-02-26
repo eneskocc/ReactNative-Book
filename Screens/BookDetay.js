@@ -5,11 +5,12 @@ import { useNavigation, useNavigationParam } from '@react-navigation/native';
 import { Dimensions } from 'react-native'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import store from 'react-native-simple-store';
 export default function BookDetay(props) {
     const obje = props.props.route.params.props;
     const { price2 } = props.props.route.params;
-    
+   
     return (
         <ScrollView>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#E0F0D5', height: windowHeight - 100 }}>
@@ -22,23 +23,8 @@ export default function BookDetay(props) {
                     <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#3F4441', padding: 10, textAlign: 'center' }}>{obje.name}</Text>
                     <Text style={{ fontSize: 12, textAlign: 'center' }}> Autor do livro</Text>
                     <Text style={{ fontSize: 12, padding: 20, textAlign: 'center' }}> Coraline é uma saga fantástica de terror do autor britânico Neil Gaiman, publicado em 2002 pela Bloomsbury, no Reino Unido e pela Harper Collins, nos Estados Unidos. Ganhou os prêmios Hugo e Nebula Award de melhor novela de 2002 e o Bram Stoker Award de melhor trabalho de novos escritores de 2002</Text>
-                    <TouchableOpacity style={styles.Download} onPress={async() => {
-                        try {
-                            let jsonValue =null;
-                            try {
-                                jsonValue = await AsyncStorage.getItem('@book');
-                                jsonValue=JSON.parse(jsonValue);
-                            } catch (e) {
-                                // error reading value
-                            }
-                            jsonValue.push(obje);
-                            const jsonValue1 = JSON.stringify([]);
-                            console.log(jsonValue1);
-                            await AsyncStorage.setItem('@book', jsonValue1);
-                        } catch (e) {
-                            // saving error
-                        }
-                    }}><Text>Sepete Ekle {price2} TL</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.Download} onPress={store.push("cart", obje)}><Text>Sepete Ekle {price2} TL</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.Download} onPress={removeValue}><Text>Sepete Ekle {price2} TL</Text></TouchableOpacity>
                 </View>
             </View>
         </ScrollView>
