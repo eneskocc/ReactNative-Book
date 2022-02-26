@@ -3,19 +3,19 @@ import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types'
 export default function Urun(props) {
     const [count, setCount] = useState(0);
-
+    console.log(props);
     return (
         <View style={styles.container}>
             <Image
                 style={styles.tinyLogo}
-                source={require('../img/devlet.jpeg')}
+                source={props.img}
             />
             <View style={styles.center}>
                 <Text style={styles.centerTextName}>
                     {props.name}
                 </Text>
                 <Text style={styles.centerTextFiyat}>
-                {props.fiyat} TL
+                {props.price} TL
                 </Text>
             </View>
             <View style={styles.end}>
@@ -27,7 +27,7 @@ export default function Urun(props) {
                     <Text style={styles.endText}>-</Text>
                 </TouchableOpacity>
             </View>
-            
+
         </View>
     )
 
