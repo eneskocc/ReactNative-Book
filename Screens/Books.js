@@ -9,49 +9,57 @@ const Books = () => {
             id: '1',
             name: 'amok kosucusu',
             src: require('../img/amok-kosucusu.jpeg'),
-            price: '70',
+            price: 24,
+            discount:45,
         },
         {
             id: '2',
             name: 'Sineklerin Tanrısı',
             src: require('../img/sineklerin-tanrisi.jpeg'),
-            price: '19',
+            price: 20,
+            discount:5,
         },
         {
             id: '3',
             name: 'satranc',
             src: require('../img/satranc.jpeg'),
-            price: '50',
+            price: 10,
+            discount:15,
         },
         {
             id: '4',
             name: 'devlet  ',
             src: require('../img/devlet.jpeg'),
             price: '19',
+            discount:35,
         },
         {
             id: '5',
             name: 'hayvan cifliği',
             src: require('../img/hayvan-ciftligi.jpeg'),
-            price: '50',
+            price: 12,
+            discount:45,
         },
         {
             id: '6',
             name: 'satranc',
             src: require('../img/satranc.jpeg'),
-            price: '50',
+            price: 45,
+            discount:40,
         },
         {
             id: '7',
             name: 'devlet',
             src: require('../img/devlet.jpeg'),
-            price: '19',
+            price: 30,
+            discount:55,
         },
         {
             id: '8',
             name: 'hayvan cifliği',
             src: require('../img/hayvan-ciftligi.jpeg'),
-            price: '50',
+            price: 69,
+            discount:30,
         }
     ];
     return (
@@ -59,7 +67,7 @@ const Books = () => {
             <View style={styles.card}>
                 {
                     foto.map((item, index) => (
-                        <BookCard name={item.name} img={item.src} price={item.price} />
+                        <BookCard key={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount}/>
                     ))
                 }
             </View>
@@ -73,12 +81,12 @@ export default Books
 
 const styles = StyleSheet.create({
     card: {
-        width: windowWidth,
+        width:windowWidth,
         flexWrap: 'wrap',
         flexDirection: 'row',
-        paddingHorizontal: 20,
-        paddingVertical: 15,
+        paddingHorizontal:20,
+        paddingVertical:15,
         alignItems: 'center',
         backgroundColor: '#fafafa'
-    },
+      },
 })
