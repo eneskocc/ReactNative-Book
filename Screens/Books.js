@@ -68,6 +68,46 @@ const Books = () => {
             price: 69,
             discount:30,
             newPrice:0
+        },
+        {
+            id: '9',
+            name: 'devlet  ',
+            src: require('../img/devlet.jpeg'),
+            price: '19',
+            discount:35,
+            newPrice:0
+        },
+        {
+            id: '10',
+            name: 'hayvan cifliği',
+            src: require('../img/hayvan-ciftligi.jpeg'),
+            price: 12,
+            discount:45,
+            newPrice:0
+        },
+        {
+            id: '11',
+            name: 'satranc',
+            src: require('../img/satranc.jpeg'),
+            price: 45,
+            discount:40,
+            newPrice:0
+        },
+        {
+            id: '12',
+            name: 'devlet',
+            src: require('../img/devlet.jpeg'),
+            price: 30,
+            discount:55,
+            newPrice:0
+        },
+        {
+            id: '13',
+            name: 'hayvan cifliği',
+            src: require('../img/hayvan-ciftligi.jpeg'),
+            price: 69,
+            discount:30,
+            newPrice:0
         }
     ];
     return (
