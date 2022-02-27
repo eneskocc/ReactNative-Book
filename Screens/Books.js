@@ -110,12 +110,15 @@ const Books = () => {
             newPrice:0
         }
     ];
+    const sepet = [
+       
+    ];
     return (
         <ScrollView>
             <View style={styles.card}>
                 {
                     foto.map((item, index) => (
-                        <BookCard key={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount}/>
+                        <BookCard key={item.id} id={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} sepet={sepet}/>
                     ))
                 }
             </View>

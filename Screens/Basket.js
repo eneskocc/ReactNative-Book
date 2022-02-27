@@ -4,17 +4,44 @@ import Urun from '../components/Urun';
 import BookCard from '../components/BookCard';
 
 export default function Basket(props) {
+    const foto = [
+
+        {
+            id: '1',
+            name: 'amok kosucusu',
+            src: require('../img/amok-kosucusu.jpeg'),
+            price: 24,
+            discount: 45,
+        },
+        {
+            id: '2',
+            name: 'amok kosucusu',
+            src: require('../img/amok-kosucusu.jpeg'),
+            price: 24,
+            discount: 45,
+        },
+        {
+            id: '3',
+            name: 'amok kosucusu',
+            src: require('../img/amok-kosucusu.jpeg'),
+            price: 24,
+            discount: 45,
+        }
+    ];
     const [isLoading2, setLoading2] = useState(true);
     const [json, setData] = useState([]);
+    const activeEt =()=>{
+        setLoading2(false);
+    }
     return (
         <View>
             <ScrollView>
-                <TouchableOpacity><Text>aaa</Text></TouchableOpacity>
+                <TouchableOpacity onPress={activeEt}><Text>aaa</Text></TouchableOpacity>
                 {isLoading2 ? <ActivityIndicator /> : (
                     <FlatList
-                    data={json}
+                    data={foto}
                     renderItem={({ item }) => (
-                        <Urun key={item.id} name={item.name} img={item.img} price={item.price} discount={item.discount} />
+                        <Urun key={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} />
                     )}
                 />
             )}

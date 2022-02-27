@@ -8,24 +8,46 @@ export default function BookCard(props) {
   function irCatalogo() {
     navigation.navigate('Details', {
       props: props,
-      price2:newPrice
+      price2: newPrice
     });
   }
   const { img } = props;
-  
-  const newPrice = props.price-((props.price * props.discount) / 100);
+  const { sepet } = props;
+  const newPrice = props.price - ((props.price * props.discount) / 100);
+  const addBasket = () => {
+    sepet.push(props);
+  }
+  const deleteBasket = () => {
+
+
+
+    const removeIndex = sepet.findIndex(item => item.id === props.id);
+    console.log(props.id);
+    // remove object
+    sepet.splice(removeIndex, 1)
+    // array = [2, 9]
+
+
+  }
+  const goster = () => {
+
+    console.log(sepet);
+
+
+  }
   return (
     <TouchableOpacity style={styles.Contanair} onPress={irCatalogo}>
       <Image
         style={styles.tinyLogo}
         source={img}
       />
+      <TouchableOpacity style={styles.btn1} onPress={goster}><Text style={styles.btnText}>goster</Text></TouchableOpacity>
       <View style={styles.Contanair2}>
         <Text style={styles.text}>{props.name}</Text>
       </View>
       <View style={styles.Contanair2}>
         <Text style={styles.textDiscount}>%{props.discount}</Text>
-        <View style={{ padding:5, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={{ padding: 5, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={styles.textPrice}>{props.price} TL</Text>
           <Text style={styles.textNewPrice}>{newPrice} TL</Text>
         </View>
@@ -35,10 +57,10 @@ export default function BookCard(props) {
       <View style={styles.btnContanair}>
 
 
-        <TouchableOpacity style={styles.btn1}><Text style={styles.btnText}>-</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.btn1} onPress={deleteBasket}><Text style={styles.btnText}>-</Text></TouchableOpacity>
 
         <Text style={styles.Text}>Sepete Ekle</Text>
-        <TouchableOpacity style={styles.btn2}><Text style={styles.btnText}>+</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.btn2} onPress={addBasket}><Text style={styles.btnText}>+</Text></TouchableOpacity>
 
       </View>
 

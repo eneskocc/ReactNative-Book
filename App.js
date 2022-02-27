@@ -44,10 +44,10 @@ function Feed() {
   );
 }
 
-function Article() {
+function Article(arr) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
-    <Basket />
+    <Basket arr={arr}/>
   );
 }
 function Details(props) {
