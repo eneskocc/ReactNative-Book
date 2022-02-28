@@ -3,45 +3,25 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 
 export default function BookCard(props) {
-
+  const { sepet } = props;
   const navigation = useNavigation();
   function irCatalogo() {
     navigation.navigate('Details', {
       props: props,
-      price2: newPrice
+      price2: newPrice,
+      sepet:sepet,
     });
   }
   const { img } = props;
-  const { sepet } = props;
+  
   const newPrice = props.price - ((props.price * props.discount) / 100);
-  const addBasket = () => {
-    sepet.push(props);
-  }
-  const deleteBasket = () => {
-
-
-
-    const removeIndex = sepet.findIndex(item => item.id === props.id);
-    console.log(props.id);
-    // remove object
-    sepet.splice(removeIndex, 1)
-    // array = [2, 9]
-
-
-  }
-  const goster = () => {
-
-    console.log(sepet);
-
-
-  }
+  
   return (
     <TouchableOpacity style={styles.Contanair} onPress={irCatalogo}>
       <Image
         style={styles.tinyLogo}
         source={img}
       />
-      <TouchableOpacity style={styles.btn1} onPress={goster}><Text style={styles.btnText}>goster</Text></TouchableOpacity>
       <View style={styles.Contanair2}>
         <Text style={styles.text}>{props.name}</Text>
       </View>
@@ -54,15 +34,7 @@ export default function BookCard(props) {
 
       </View>
 
-      <View style={styles.btnContanair}>
-
-
-        <TouchableOpacity style={styles.btn1} onPress={deleteBasket}><Text style={styles.btnText}>-</Text></TouchableOpacity>
-
-        <Text style={styles.Text}>Sepete Ekle</Text>
-        <TouchableOpacity style={styles.btn2} onPress={addBasket}><Text style={styles.btnText}>+</Text></TouchableOpacity>
-
-      </View>
+     
 
     </TouchableOpacity>
   )
@@ -82,7 +54,6 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     height: 40,
     flexDirection: 'row',
-    marginBottom: 5,
   },
   tinyLogo: {
     width: 140,
@@ -91,17 +62,6 @@ const styles = StyleSheet.create({
   text: {
     color: '#fafafa',
     fontWeight: '500',
-  },
-  btnContanair: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 15,
-    width: 160,
-    height: 47,
-    borderRadius: 30,
-    color: 'black',
-    backgroundColor: '#92BBD9',
-
   },
   textDiscount: {
     backgroundColor: '#ff5148',
@@ -112,30 +72,5 @@ const styles = StyleSheet.create({
   textPrice: {
     textDecorationLine: 'line-through',
   },
-  btnText: {
-    marginHorizontal: 2,
-    fontSize: 20,
-  },
-  Text: {
-    marginHorizontal: 2,
-    fontSize: 15,
-  },
-  btn1: {
-    alignItems: 'center',
-    paddingVertical: 10,
-    backgroundColor: '#97CAE5',
-    height: 47,
-    width: 40,
-    borderBottomStartRadius: 30,
-    borderTopLeftRadius: 30,
-  },
-  btn2: {
-    alignItems: 'center',
-    paddingVertical: 10,
-    backgroundColor: '#97CAE5',
-    height: 47,
-    width: 40,
-    borderBottomEndRadius: 30,
-    borderTopRightRadius: 30,
-  }
+ 
 });

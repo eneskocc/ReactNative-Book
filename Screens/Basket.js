@@ -2,7 +2,7 @@ import { Text, StyleSheet, View, ScrollView, TouchableOpacity ,ActivityIndicator
 import React, { Component,useState } from 'react'
 import Urun from '../components/Urun';
 import BookCard from '../components/BookCard';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Basket(props) {
     const foto = [
 
@@ -30,16 +30,25 @@ export default function Basket(props) {
     ];
     const [isLoading2, setLoading2] = useState(true);
     const [json, setData] = useState([]);
-    const activeEt =()=>{
-        setLoading2(false);
-    }
+    
+    const getData = async () => {
+        try {
+          const jsonValue = await AsyncStorage.getItem('@sepet')
+          setData(JSON.parse(jsonValue));
+          console.log(jsonValue);
+          setLoading2(false);
+          
+        } catch(e) {
+          // error reading value
+        }
+      }
     return (
         <View>
             <ScrollView>
-                <TouchableOpacity onPress={activeEt}><Text>aaa</Text></TouchableOpacity>
+                <TouchableOpacity onPress={getData}><Text>aaa</Text></TouchableOpacity>
                 {isLoading2 ? <ActivityIndicator /> : (
                     <FlatList
-                    data={foto}
+                    data={json}
                     renderItem={({ item }) => (
                         <Urun key={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} />
                     )}
