@@ -21,6 +21,7 @@ import BookCard from './components/BookCard';
 import BookDetay from './Screens/BookDetay';
 import Books from './Screens/Books';
 import BestSeller from './components/BestSeller';
+import Search from './Screens/Search';
 function Feed() {
   return (
     <ScrollView>
@@ -59,6 +60,13 @@ function Details(props) {
 function BooksScreen() {
   return (
     <Books sepet={sepet}/>
+    
+  );
+}
+
+function SearchScreen() {
+  return (
+    <Search />
     
   );
 }
@@ -129,7 +137,7 @@ export default function App() {
               <Ionicons name="home" color={'black'} style={styles.icons} size={24} />
             ),
           }} />
-        <Tab.Screen name="Search" component={SettingsStackScreen}
+        <Tab.Screen name="Search" component={SearchScreen}
           options={{
             tabBarLabel: 'Search',
             tabBarIcon: ({ color, size }) => (
