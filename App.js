@@ -44,7 +44,7 @@ function Feed() {
 
   );
 }
-const [sepet,setSepet] =useState([]);
+const sepet =[];
 function Article() {
   const [modalVisible, setModalVisible] = useState(false);
   return (

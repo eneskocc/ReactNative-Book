@@ -43,8 +43,8 @@ export default function BookCard(props) {
 const styles = StyleSheet.create({
   Contanair: {
     alignItems: 'center',
-    width: 175,
     margin: 5,
+    width:175,
     borderRadius: 10,
     paddingVertical: 12,
     backgroundColor: '#9DD6EB',
