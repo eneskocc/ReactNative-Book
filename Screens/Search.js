@@ -266,6 +266,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         paddingLeft: 20,
         margin: 5,
+        marginTop:15,
         borderColor: '#009688',
         backgroundColor: '#FFFFFF',
     },

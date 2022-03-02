@@ -22,6 +22,7 @@ import BookDetay from './Screens/BookDetay';
 import Books from './Screens/Books';
 import BestSeller from './components/BestSeller';
 import Search from './Screens/Search';
+const sepet =[];
 function Feed() {
   return (
     <ScrollView>
@@ -44,7 +45,7 @@ function Feed() {
 
   );
 }
-const sepet =[];
+
 function Article() {
   const [modalVisible, setModalVisible] = useState(false);
   return (

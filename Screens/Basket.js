@@ -1,57 +1,36 @@
 import { Text, StyleSheet, View, ScrollView, TouchableOpacity, ActivityIndicator, FlatList } from 'react-native'
-import React, { Component, useState } from 'react'
+import React, { Component, useState,useEffect,componentDidMount } from 'react'
 import Urun from '../components/Urun';
 import BookCard from '../components/BookCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Basket(props) {
-    const foto = [
-
-        {
-            id: '1',
-            name: 'amok kosucusu',
-            src: require('../img/amok-kosucusu.jpeg'),
-            price: 24,
-            discount: 45,
-        },
-        {
-            id: '2',
-            name: 'amok kosucusu',
-            src: require('../img/amok-kosucusu.jpeg'),
-            price: 24,
-            discount: 45,
-        },
-        {
-            id: '3',
-            name: 'amok kosucusu',
-            src: require('../img/amok-kosucusu.jpeg'),
-            price: 24,
-            discount: 45,
-        }
-    ];
-    const [isLoading2, setLoading2] = useState(true);
+    const [isLoading, setLoading] = useState(true);
     const [json, setData] = useState([]);
-
-    const getData = async () => {
-
-
-        console.log(props.sepet);
-
+    const { sepet } = props;
+    const obje=props;
+    const getData =() => {
+        
+        setLoading(true);
     }
+ 
+    useEffect(() => {
+        setData(props.sepet);
+        setLoading(false);
+        
+      });
     return (
         <View>
-            <ScrollView>
-                <TouchableOpacity onPress={getData}><Text>aaa</Text></TouchableOpacity>
-                {isLoading2 ? <ActivityIndicator /> : (
-                    <FlatList
-                        data={json}
-                        renderItem={({ item }) => (
-                            <Urun key={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} />
-                        )}
-                    />
-                )}
-
-            </ScrollView>
-
+            {isLoading ? <ActivityIndicator /> : (
+                <ScrollView >
+                    <View style={styles.card}>
+                        {
+                            json.map((item, index) => (
+                                <Urun key={item.id} id={item.id} name={item.name} img={item.img} price={item.price} discount={item.discount} number={item.number} sepet={sepet} onPress={getData}/>
+                            ))
+                        }
+                    </View>
+                </ScrollView>
+            )}
         </View>
     )
 

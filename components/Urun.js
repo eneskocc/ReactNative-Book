@@ -2,7 +2,37 @@ import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types'
 export default function Urun(props) {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0); 
+    const { sepet } = props;
+    const obje=props;
+    const addBasket = () => {
+        const removeIndex = sepet.findIndex(item => item.id === obje.id);
+        console.log(removeIndex);
+        if (removeIndex === -1) {
+            sepet.push(obje);
+        } else {
+
+            let obj = sepet[removeIndex];
+            sepet.splice(removeIndex, 1);
+            sepet.push({ ...obje, number: (obj.number + 1) });
+        }
+        props.onPress();
+
+    }
+    const deleteBasket = () => {
+        const removeIndex = sepet.findIndex(item => item.id === obje.id);
+        let obj = sepet[removeIndex];
+        if (obj.number === 1) {
+
+            console.log(obj.number);
+            sepet.splice(removeIndex, 1);
+        } else {
+
+            sepet.splice(removeIndex, 1);
+            sepet.push({ ...obje, number: (obj.number - 1) });
+        }
+        props.onPress();
+    }
     return (
         <View style={styles.container}>
             <Image
@@ -24,11 +54,11 @@ export default function Urun(props) {
             </View>
 
             <View style={styles.end}>
-                <TouchableOpacity onPress={() => setCount(count + 1)}>
+                <TouchableOpacity onPress={addBasket}>
                     <Text style={styles.endText}>+</Text>
                 </TouchableOpacity>
-                <Text style={styles.endText}>{count}</Text>
-                <TouchableOpacity onPress={() => setCount(count - 1)}>
+                <Text style={styles.endText}>{props.number}</Text>
+                <TouchableOpacity onPress={deleteBasket}>
                     <Text style={styles.endText}>-</Text>
                 </TouchableOpacity>
             </View>
