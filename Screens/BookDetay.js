@@ -11,27 +11,7 @@ export default function BookDetay(props) {
     const obje = props.props.route.params.props;
     const { price2 } = props.props.route.params;
     const { sepet } = props.props.route.params;
-    console.log(sepet);
-    const storeData = async (value) => {
-        try {
-            const jsonValue = JSON.stringify(value);
-            console.log(value);
-            await AsyncStorage.mergeItem('@sepet', JSON.stringify(jsonValue));
-        } catch (e) {
-            // saving error
-        }
-    }
-    const getData = async () => {
-        try {
-            const jsonValue = await AsyncStorage.getItem('@sepet')
-           
-            console.log(jsonValue);
-            
-
-        } catch (e) {
-            // error reading value
-        }
-    }
+ 
     const addBasket = () => {
         const removeIndex = sepet.findIndex(item => item.id === obje.id);
         console.log(removeIndex);
