@@ -199,7 +199,6 @@ const Search = () => {
             });
             setFilteredDataSource(newData);
             setSearch(text);
-            ItemView();
         } else {
             // Inserted text is blank
             // Update FilteredDataSource with masterDataSource
@@ -210,19 +209,7 @@ const Search = () => {
 
     };
 
-    const ItemView = () => {
-        return (
-            <ScrollView >
-                <View style={styles.card}>
-                    {
-                        filteredDataSource.map((item, index) => (
-                            <BookCard key={item.id} id={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} number={item.number} />
-                        ))
-                    }
-                </View>
-            </ScrollView>
-        );
-    };
+  
 
 
 
