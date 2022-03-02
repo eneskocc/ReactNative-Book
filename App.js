@@ -43,22 +43,23 @@ function Feed() {
 
   );
 }
-
-function Article(arr) {
+const [sepet,setSepet] =useState([]);
+function Article() {
   const [modalVisible, setModalVisible] = useState(false);
   return (
-    <Basket arr={arr}/>
+    <Basket sepet={sepet}/>
   );
 }
 function Details(props) {
   return (
-    <BookDetay props={props}/>
+    <BookDetay props={props} sepet={sepet}/>
   );
 }
 
 function BooksScreen() {
   return (
-    <Books />
+    <Books sepet={sepet}/>
+    
   );
 }
 

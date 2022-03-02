@@ -11,6 +11,7 @@ export default function BookDetay(props) {
     const obje = props.props.route.params.props;
     const { price2 } = props.props.route.params;
     const { sepet } = props.props.route.params;
+    console.log(sepet);
     const storeData = async (value) => {
         try {
             const jsonValue = JSON.stringify(value);
@@ -43,7 +44,7 @@ export default function BookDetay(props) {
             sepet.push({ ...obje, number: (obj.number + 1) });
         }
 
-        storeData(sepet);
+        
 
 
 
@@ -61,14 +62,14 @@ export default function BookDetay(props) {
             sepet.splice(removeIndex, 1);
             sepet.push({ ...obje, number: (obj.number - 1) });
         }
-        storeData(sepet);
+        
 
 
     }
     const goster = () => {
-
+        console.log(sepet);
         
-        getData();
+        
 
     }
     return (

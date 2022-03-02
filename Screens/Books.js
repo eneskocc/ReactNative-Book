@@ -3,7 +3,8 @@ import React from 'react'
 import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 import BookCard from '../components/BookCard';
-const Books = () => {
+const Books = (props) => {
+    
     const foto = [
         {
             id: 1,
@@ -124,15 +125,13 @@ const Books = () => {
             number:1,
         }
     ];
-    const sepet = [
-       
-    ];
+    
     return (
         <ScrollView>
             <View style={styles.card}>
                 {
                     foto.map((item, index) => (
-                        <BookCard key={item.id} id={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} number={item.number} sepet={sepet}/>
+                        <BookCard key={item.id} id={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} number={item.number} sepet={props.sepet}/>
                     ))
                 }
             </View>
