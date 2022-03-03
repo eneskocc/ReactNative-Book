@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, Button, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { Dimensions } from 'react-native';
-const windowWidth = Dimensions.get('window').width;
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { FontAwesome } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import 'react-native-gesture-handler';
-import { SlideModal } from 'react-native-slide-modal';
+import React, { useState } from "react";
+import {
+  View,
+  TouchableOpacity,
+  Button,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { Dimensions } from "react-native";
+const windowWidth = Dimensions.get("window").width;
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { FontAwesome } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import "react-native-gesture-handler";
+import { SlideModal } from "react-native-slide-modal";
 
-import Swiper from './components/Swipers';
-import Card from './components/Card';
-import Login from './Screens/Login';
+import Swiper from "./components/Swipers";
+import Card from "./components/Card";
+import Login from "./Screens/Login";
 
-import Basket from './Screens/Basket';
-import BookCard from './components/BookCard';
-import BookDetay from './Screens/BookDetay';
-import Books from './Screens/Books';
-import BestSeller from './components/BestSeller';
-import Search from './Screens/Search';
-const sepet =[];
+import Basket from "./Screens/Basket";
+import BookCard from "./components/BookCard";
+import BookDetay from "./Screens/BookDetay";
+import Books from "./Screens/Books";
+import BestSeller from "./components/BestSeller";
+import Search from "./Screens/Search";
+const [json, setData] = useState([]);
 function Feed() {
   return (
     <ScrollView>
@@ -41,55 +49,36 @@ function Feed() {
         <BestSeller />
       </View>
     </ScrollView>
-
-
   );
 }
 
 function Article() {
   const [modalVisible, setModalVisible] = useState(false);
-  return (
-    <Basket sepet={sepet}/>
-  );
+  return <Basket sepet={sepet} />;
 }
 function Details(props) {
-  return (
-    <BookDetay props={props} sepet={sepet}/>
-  );
+  return <BookDetay props={props} sepet={sepet} />;
 }
 
 function BooksScreen() {
-  return (
-    <Books sepet={sepet}/>
-    
-  );
+  return <Books sepet={sepet} />;
 }
 
 function SearchScreen() {
-  return (
-    <Search />
-    
-  );
+  return <Search />;
 }
 
-
-
-
 function LoginScreen() {
-  return (
-    <Login />
-  );
+  return <Login />;
 }
 
 function SettingsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Settings!</Text>
     </View>
   );
 }
-
-
 
 const HomeStack = createNativeStackNavigator();
 
@@ -131,45 +120,78 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Home" component={HomeStackScreen}
+        <Tab.Screen
+          name="Home"
+          component={HomeStackScreen}
           options={{
-            tabBarLabel: 'Home',
+            tabBarLabel: "Home",
             tabBarIcon: ({ color, size }) => (
-              <Ionicons name="home" color={'black'} style={styles.icons} size={24} />
+              <Ionicons
+                name="home"
+                color={"black"}
+                style={styles.icons}
+                size={24}
+              />
             ),
-          }} />
-        <Tab.Screen name="Search" component={SearchScreen}
+          }}
+        />
+        <Tab.Screen
+          name="Search"
+          component={SearchScreen}
           options={{
-            tabBarLabel: 'Search',
+            tabBarLabel: "Search",
             tabBarIcon: ({ color, size }) => (
-              <Ionicons name="ios-search" size={24} style={styles.icons} color="black" />
+              <Ionicons
+                name="ios-search"
+                size={24}
+                style={styles.icons}
+                color="black"
+              />
             ),
-          }} />
-        <Tab.Screen name=" " component={BasketStackScreen}
+          }}
+        />
+        <Tab.Screen
+          name=" "
+          component={BasketStackScreen}
           options={{
-
             tabBarIcon: ({ color, size }) => (
               <View style={styles.iconsAdd}>
                 <FontAwesome name="shopping-basket" size={26} color="white" />
                 <Text style={styles.iconsAddText}>140</Text>
               </View>
-
             ),
-          }} />
-        <Tab.Screen name="Messages" component={SettingsScreen}
+          }}
+        />
+        <Tab.Screen
+          name="Messages"
+          component={SettingsScreen}
           options={{
-            tabBarLabel: 'Message',
+            tabBarLabel: "Message",
             tabBarIcon: ({ color, size }) => (
-              <AntDesign name="message1" size={24} style={styles.icons} color="black" />
+              <AntDesign
+                name="message1"
+                size={24}
+                style={styles.icons}
+                color="black"
+              />
             ),
-          }} />
-        <Tab.Screen name="Settings" component={LoginScreen}
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={LoginScreen}
           options={{
-            tabBarLabel: 'Home',
+            tabBarLabel: "Home",
             tabBarIcon: ({ color, size }) => (
-              <AntDesign name="profile" size={24} style={styles.icons} color="black" />
+              <AntDesign
+                name="profile"
+                size={24}
+                style={styles.icons}
+                color="black"
+              />
             ),
-          }} />
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -180,34 +202,32 @@ const styles = StyleSheet.create({
     height: 200,
   },
   card: {
-    width:windowWidth,
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    paddingHorizontal:20,
-    paddingVertical:15,
-    alignItems: 'center',
-    backgroundColor: '#fafafa'
+    width: windowWidth,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    alignItems: "center",
+    backgroundColor: "#fafafa",
   },
   iconsAdd: {
-    position: 'relative',
+    position: "relative",
     width: 60,
     height: 60,
-    backgroundColor: '#9DD6EB',
+    backgroundColor: "#9DD6EB",
     borderRadius: 30,
-    alignItems: 'center',
-    flexDirection: 'column',
+    alignItems: "center",
+    flexDirection: "column",
     paddingTop: 6,
     marginBottom: 15,
   },
   iconsAddText: {
-    color: '#fafafa',
+    color: "#fafafa",
     paddingVertical: 10,
   },
   coksatan: {
-    backgroundColor: '#fafafa',
+    backgroundColor: "#fafafa",
     paddingHorizontal: 10,
-    paddingVertical:10,
-  }
+    paddingVertical: 10,
+  },
 });
-
-

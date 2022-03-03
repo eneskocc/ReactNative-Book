@@ -5,34 +5,7 @@ export default function Urun(props) {
     const [count, setCount] = useState(0); 
     const { sepet } = props;
     const obje=props;
-    const addBasket = () => {
-        const removeIndex = sepet.findIndex(item => item.id === obje.id);
-        console.log(removeIndex);
-        if (removeIndex === -1) {
-            sepet.push(obje);
-        } else {
-
-            let obj = sepet[removeIndex];
-            sepet.splice(removeIndex, 1);
-            sepet.push({ ...obje, number: (obj.number + 1) });
-        }
-        props.onPress();
-
-    }
-    const deleteBasket = () => {
-        const removeIndex = sepet.findIndex(item => item.id === obje.id);
-        let obj = sepet[removeIndex];
-        if (obj.number === 1) {
-
-            console.log(obj.number);
-            sepet.splice(removeIndex, 1);
-        } else {
-
-            sepet.splice(removeIndex, 1);
-            sepet.push({ ...obje, number: (obj.number - 1) });
-        }
-        props.onPress();
-    }
+   
     return (
         <View style={styles.container}>
             <Image
@@ -54,11 +27,11 @@ export default function Urun(props) {
             </View>
 
             <View style={styles.end}>
-                <TouchableOpacity onPress={addBasket}>
+                <TouchableOpacity onPress={props.addBasket}>
                     <Text style={styles.endText}>+</Text>
                 </TouchableOpacity>
                 <Text style={styles.endText}>{props.number}</Text>
-                <TouchableOpacity onPress={deleteBasket}>
+                <TouchableOpacity onPress={props.deleteBasket}>
                     <Text style={styles.endText}>-</Text>
                 </TouchableOpacity>
             </View>
