@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import {
   View,
   Text,
@@ -13,8 +13,12 @@ import { Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import App from '../App';
 export default function BookDetay(props) {
+   
+    const userName = useContext(UserContext);
+  console.log(userName);
+  userName.push("aaa");
   const obje = props.props.route.params.props;
   const { price2 } = props.props.route.params;
   const { sepet } = props.props.route.params;

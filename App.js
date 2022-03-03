@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState ,useContext, createContext } from "react";
+const UserContext = createContext("");
 import {
   View,
   TouchableOpacity,
@@ -7,9 +8,9 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { Dimensions } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -17,20 +18,18 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import "react-native-gesture-handler";
 import { SlideModal } from "react-native-slide-modal";
 
 import Swiper from "./components/Swipers";
 import Card from "./components/Card";
 import Login from "./Screens/Login";
-
 import Basket from "./Screens/Basket";
 import BookCard from "./components/BookCard";
 import BookDetay from "./Screens/BookDetay";
 import Books from "./Screens/Books";
 import BestSeller from "./components/BestSeller";
 import Search from "./Screens/Search";
-const [json, setData] = useState([]);
+
 function Feed() {
   return (
     <ScrollView>
@@ -51,7 +50,7 @@ function Feed() {
     </ScrollView>
   );
 }
-
+const sepet=[];
 function Article() {
   const [modalVisible, setModalVisible] = useState(false);
   return <Basket sepet={sepet} />;
@@ -117,7 +116,11 @@ function BasketStackScreen() {
 const Tab = createBottomTabNavigator();
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
+  const userName = ["John "];
   return (
+    <UserContext.Provider value={userName}>
+     
+    
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen
@@ -194,6 +197,7 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
+    </UserContext.Provider>
   );
 }
 
