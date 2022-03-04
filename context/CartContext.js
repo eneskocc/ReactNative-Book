@@ -1,10 +1,10 @@
-import React,{ createContext } from "react"; 
+import React,{ createContext,useState } from "react"; 
 export const CartContext = React.createContext();
 
 const CartContextProvider = (props) => {
-  const sepet = [];
+    const sepet = [];
   let tutar=0;
-  return <CartContext.Provider value={sepet,tutar}>
+  return <CartContext.Provider value={sepet}>
   {props.children}
 </CartContext.Provider>
 };

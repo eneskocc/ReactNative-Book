@@ -13,6 +13,7 @@ import React, {
   useEffect,
   useContext,
   componentDidMount,
+  componentDidUpdate,
 } from "react";
 import Urun from "../components/Urun";
 import BookCard from "../components/BookCard";
@@ -23,12 +24,13 @@ export default function Basket(props) {
   const sepet = useContext(CartContext);
 
   useEffect(() => {
-    
-
+    lod();
     setLoading(false);
   });
-  const lod = () => {
-    setLoading(true );
+  
+  const lod = async () => {
+   setLoading(true);
+   return 'a';
 }
   const addBasket = (aa) => {
     const removeIndex = sepet.findIndex(item => item.id === aa.id);
