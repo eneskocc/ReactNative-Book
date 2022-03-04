@@ -20,18 +20,18 @@ export default function Urun(props) {
                     <Text style={styles.textDiscount}>%{props.discount}</Text>
                     <View style={{ padding: 5, justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={styles.textPrice}>{props.price} TL</Text>
-                        <Text style={styles.textNewPrice}> TL</Text>
+                        <Text style={styles.textNewPrice}>{props.newPrice} TL</Text>
                     </View>
 
                 </View>
             </View>
 
             <View style={styles.end}>
-                <TouchableOpacity onPress={props.addBasket}>
+                <TouchableOpacity onPress={props.addBasket(obje)}>
                     <Text style={styles.endText}>+</Text>
                 </TouchableOpacity>
                 <Text style={styles.endText}>{props.number}</Text>
-                <TouchableOpacity onPress={props.deleteBasket}>
+                <TouchableOpacity onPress={props.deleteBasket(obje)}>
                     <Text style={styles.endText}>-</Text>
                 </TouchableOpacity>
             </View>

@@ -11,42 +11,39 @@ import React, {
   Component,
   useState,
   useEffect,
+  useContext,
   componentDidMount,
 } from "react";
 import Urun from "../components/Urun";
 import BookCard from "../components/BookCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { CartContext } from '../context/CartContext';
 export default function Basket(props) {
   const [isLoading, setLoading] = useState(true);
-  const [json, setData] = useState([]);
-  const { sepet } = props;
-  const obje = props;
-  const getData = () => {
-    setLoading(true);
-  };
+  const sepet = useContext(CartContext);
 
   useEffect(() => {
     
-    setData(props.sepet);
 
     setLoading(false);
   });
-  const addBasket = () => {
-    const removeIndex = sepet.findIndex(item => item.id === obje.id);
+  const lod = () => {
+    setLoading(true );
+}
+  const addBasket = (aa) => {
+    const removeIndex = sepet.findIndex(item => item.id === aa.id);
     console.log(removeIndex);
     if (removeIndex === -1) {
-        sepet.push(obje);
+        sepet.push(aa);
     } else {
 
         let obj = sepet[removeIndex];
         sepet.splice(removeIndex, 1);
-        sepet.push({ ...obje, number: (obj.number + 1) });
+        sepet.push({ ...aa, number: (obj.number + 1) });
     }
-    
-
 }
-const deleteBasket = () => {
-    const removeIndex = sepet.findIndex(item => item.id === obje.id);
+const deleteBasket = (aa) => {
+    const removeIndex = sepet.findIndex(item => item.id === aa.id);
     let obj = sepet[removeIndex];
     if (obj.number === 1) {
 
@@ -55,29 +52,30 @@ const deleteBasket = () => {
     } else {
 
         sepet.splice(removeIndex, 1);
-        sepet.push({ ...obje, number: (obj.number - 1) });
+        sepet.push({ ...aa, number: (obj.number - 1) });
     }
    
 }
+
   return (
     <View>
-        <TouchableOpacity onPress={getData}><Text>aaa</Text></TouchableOpacity>
+        <TouchableOpacity onPress={lod}><Text>aaa</Text></TouchableOpacity>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
         <ScrollView>
           <View style={styles.card}>
-            {json.map((item, index) => (
+            {sepet.map((item, index) => (
               <Urun
                 key={item.id}
                 id={item.id}
                 name={item.name}
                 img={item.img}
                 price={item.price}
+                newPrice={item.newPrice}
                 discount={item.discount}
                 number={item.number}
                 sepet={sepet}
-                onPress={getData}
                 addBasket={addBasket}
                 deleteBasket={deleteBasket}
               />

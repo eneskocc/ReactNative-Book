@@ -1,5 +1,5 @@
 import React, { useState ,useContext, createContext } from "react";
-const UserContext = createContext("");
+import CartContextProvider from "./context/CartContext";
 import {
   View,
   TouchableOpacity,
@@ -116,10 +116,12 @@ function BasketStackScreen() {
 const Tab = createBottomTabNavigator();
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
-  const userName = ["John "];
+  const sepet = useContext(CartContextProvider);
+ 
+  
   return (
-    <UserContext.Provider value={userName}>
-     
+    <CartContextProvider value={sepet}>
+   
     
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
@@ -197,7 +199,7 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
-    </UserContext.Provider>
+    </CartContextProvider>
   );
 }
 
