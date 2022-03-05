@@ -59,9 +59,6 @@ export default function Basket(props) {
   
   return (
     <View>
-      <TouchableOpacity onPress={lod}>
-        <Text>aaa</Text>
-      </TouchableOpacity>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
@@ -84,10 +81,10 @@ export default function Basket(props) {
             ))}
            
           </View>
-          <TouchableOpacity style={styles.btnContanair}>
+          <TouchableOpacity style={styles.btnContanair} onPress={lod}>
             <Text style={styles.btnText}>Siparişi tamamla {sepet.forEach(e => {
       tutar=tutar+(e.newPrice*e.number);
-    })} {tutar}TL</Text>
+    })} {tutar} TL</Text>
           </TouchableOpacity>
           <View style={styles.coksatan}>
             <Text style={styles.coksatanText}>Sizin için önerilenler!</Text>
@@ -101,7 +98,6 @@ export default function Basket(props) {
 
 const styles = StyleSheet.create({
   btnContanair: {
-    flexDirection: "row",
     alignItems: "center",
     paddingVertical: 10,
     width: "90%",
@@ -109,12 +105,11 @@ const styles = StyleSheet.create({
     height: 47,
     borderRadius: 30,
     color: "black",
-    alignItems: "center",
-    backgroundColor: "rgba(4, 72, 31, 0.17)",
+    backgroundColor: "#228b22",
     marginVertical: 10,
   },
   btnText: {
-    marginHorizontal: "20%",
+
     fontSize: 20,
   },
 });
