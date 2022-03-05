@@ -16,52 +16,52 @@ import React, {
   componentDidUpdate,
 } from "react";
 import Urun from "../components/Urun";
-import BookCard from "../components/BookCard";
+import BestSeller from "../components/BestSeller";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { CartContext } from '../context/CartContext';
+import { CartContext } from "../context/CartContext";
 export default function Basket(props) {
   const [isLoading, setLoading] = useState(true);
   const sepet = useContext(CartContext);
-
+  let tutar = 0;
   useEffect(() => {
-    lod();
+
+    
+    
     setLoading(false);
   });
-  
+
   const lod = async () => {
-   setLoading(true);
-   return 'a';
-}
+    setLoading(true);
+    return "a";
+  };
   const addBasket = (aa) => {
-    const removeIndex = sepet.findIndex(item => item.id === aa.id);
+    const removeIndex = sepet.findIndex((item) => item.id === aa.id);
     console.log(removeIndex);
     if (removeIndex === -1) {
-        sepet.push(aa);
+      sepet.push(aa);
     } else {
-
-        let obj = sepet[removeIndex];
-        sepet.splice(removeIndex, 1);
-        sepet.push({ ...aa, number: (obj.number + 1) });
+      let obj = sepet[removeIndex];
+      sepet.splice(removeIndex, 1);
+      sepet.push({ ...aa, number: obj.number + 1 });
     }
-}
-const deleteBasket = (aa) => {
-    const removeIndex = sepet.findIndex(item => item.id === aa.id);
+  };
+  const deleteBasket = (aa) => {
+    const removeIndex = sepet.findIndex((item) => item.id === aa.id);
     let obj = sepet[removeIndex];
     if (obj.number === 1) {
-
-        console.log(obj.number);
-        sepet.splice(removeIndex, 1);
+      console.log(obj.number);
+      sepet.splice(removeIndex, 1);
     } else {
-
-        sepet.splice(removeIndex, 1);
-        sepet.push({ ...aa, number: (obj.number - 1) });
+      sepet.splice(removeIndex, 1);
+      sepet.push({ ...aa, number: obj.number - 1 });
     }
-   
-}
-
+  };
+  
   return (
     <View>
-        <TouchableOpacity onPress={lod}><Text>aaa</Text></TouchableOpacity>
+      <TouchableOpacity onPress={lod}>
+        <Text>aaa</Text>
+      </TouchableOpacity>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
@@ -82,6 +82,16 @@ const deleteBasket = (aa) => {
                 deleteBasket={deleteBasket}
               />
             ))}
+           
+          </View>
+          <TouchableOpacity style={styles.btnContanair}>
+            <Text style={styles.btnText}>Siparişi tamamla {sepet.forEach(e => {
+      tutar=tutar+(e.newPrice*e.number);
+    })} {tutar}TL</Text>
+          </TouchableOpacity>
+          <View style={styles.coksatan}>
+            <Text style={styles.coksatanText}>Sizin için önerilenler!</Text>
+            <BestSeller />
           </View>
         </ScrollView>
       )}
@@ -89,4 +99,22 @@ const deleteBasket = (aa) => {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  btnContanair: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    width: "90%",
+    marginHorizontal: "5%",
+    height: 47,
+    borderRadius: 30,
+    color: "black",
+    alignItems: "center",
+    backgroundColor: "rgba(4, 72, 31, 0.17)",
+    marginVertical: 10,
+  },
+  btnText: {
+    marginHorizontal: "20%",
+    fontSize: 20,
+  },
+});

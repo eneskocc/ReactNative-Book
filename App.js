@@ -18,49 +18,29 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-import { SlideModal } from "react-native-slide-modal";
 
-import Swiper from "./components/Swipers";
-import Card from "./components/Card";
+
 import Login from "./Screens/Login";
 import Basket from "./Screens/Basket";
-import BookCard from "./components/BookCard";
 import BookDetay from "./Screens/BookDetay";
 import Books from "./Screens/Books";
-import BestSeller from "./components/BestSeller";
 import Search from "./Screens/Search";
-
-function Feed() {
+import Home from "./Screens/Home";
+function HomeScreen() {
   return (
-    <ScrollView>
-      <View style={styles.swiper}>
-        <Swiper />
-      </View>
-      <View style={styles.card}>
-        <Card name={"Dünya kalsikleri"} />
-        <Card name={"Polisiye romanlar"} />
-        <Card name={"Aşk romanlar"} />
-        <Card name={"Çocuk kitapları"} />
-        <Card name={"Yemek kitapları"} />
-      </View>
-      <View style={styles.coksatan}>
-        <Text>En Çok Satanlar!</Text>
-        <BestSeller />
-      </View>
-    </ScrollView>
+    <Home />
   );
 }
-const sepet=[];
+
 function Article() {
-  const [modalVisible, setModalVisible] = useState(false);
-  return <Basket sepet={sepet} />;
+  return <Basket />;
 }
 function Details(props) {
-  return <BookDetay props={props} sepet={sepet} />;
+  return <BookDetay props={props} />;
 }
 
 function BooksScreen() {
-  return <Books sepet={sepet} />;
+  return <Books />;
 }
 
 function SearchScreen() {
@@ -84,7 +64,7 @@ const HomeStack = createNativeStackNavigator();
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Feed" component={Feed} />
+      <HomeStack.Screen name="Feed" component={HomeScreen} />
       <HomeStack.Screen name="Details" component={Details} />
       <HomeStack.Screen name="Books" component={BooksScreen} />
       <HomeStack.Screen name="Art" component={Article} />
@@ -204,18 +184,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  swiper: {
-    height: 200,
-  },
-  card: {
-    width: windowWidth,
-    flexWrap: "wrap",
-    flexDirection: "row",
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    alignItems: "center",
-    backgroundColor: "#fafafa",
-  },
+ 
   iconsAdd: {
     position: "relative",
     width: 60,
@@ -230,10 +199,5 @@ const styles = StyleSheet.create({
   iconsAddText: {
     color: "#fafafa",
     paddingVertical: 10,
-  },
-  coksatan: {
-    backgroundColor: "#fafafa",
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-  },
+  }
 });

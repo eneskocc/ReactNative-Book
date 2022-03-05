@@ -17,8 +17,7 @@ import { CartContext } from '../context/CartContext';
 export default function BookDetay(props) {
   const sepet = useContext(CartContext);
   const obje = props.props.route.params.props;
-  const { price2 } = props.props.route.params;
-  console.log(typeof sepet);
+  console.log(obje);
   const addBasket = () => {
     const removeIndex = sepet.findIndex((item) => item.id === obje.id);
     console.log(removeIndex);

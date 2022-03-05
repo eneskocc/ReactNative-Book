@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, ScrollView, ActivityIndicator } from 'react-native'
+import React ,{useState}from 'react'
 import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 import BookCard from '../components/BookCard';
 const Books = (props) => {
-    
+    const [isLoading, setLoading] = useState(false);
     const foto = [
         {
             id: 1,
@@ -125,21 +125,21 @@ const Books = (props) => {
             number:1,
         }
     ];
-    
+   
     return (
         <ScrollView>
-            <View style={styles.card}>
+     
+        <View style={styles.card}>
                 {
                     foto.map((item, index) => (
-                        <BookCard key={item.id} id={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} number={item.number} sepet={props.sepet}/>
+                        <BookCard key={item.id} id={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} number={item.number} newPrice={item.price - ((item.price * item.discount) / 100)}/>
                     ))
                 }
             </View>
+  
         </ScrollView>
 
-
-    )
-}
+    )};
 
 export default Books
 
