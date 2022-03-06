@@ -22,16 +22,14 @@ import { CartContext } from "../context/CartContext";
 export default function Basket(props) {
   const [isLoading, setLoading] = useState(true);
   const sepet = useContext(CartContext);
+  const [sepet1,setSepet]=useState([sepet])
   let tutar = 0;
   useEffect(() => {
-
-    
-    
-    setLoading(false);
-  });
+    console.log(sepet1.length)
+  }, [sepet1]);
 
   const lod = async () => {
-    setLoading(true);
+    
     return "a";
   };
   const addBasket = (aa) => {
@@ -64,7 +62,7 @@ export default function Basket(props) {
       ) : (
         <ScrollView>
           <View style={styles.card}>
-            {sepet.map((item, index) => (
+            {sepet1.map((item, index) => (
               <Urun
                 key={item.id}
                 id={item.id}
