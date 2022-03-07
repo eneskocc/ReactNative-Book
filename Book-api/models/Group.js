@@ -2,18 +2,13 @@ const mongoose=require('mongoose');
 const Book=require('../models/Book');
 const Schema=mongoose.Schema;
 const BookSchema=mongoose.Schema({
-    book_id:Schema.Types.ObjectId,
+    group_id:Schema.Types.ObjectId,
     name:{
         type:String,
         required:true
     },
-    category:String,
-    content:String,
-    number:Number,
-    img:Number,
-    price:Number,
-    discount:Number,
-    newPrice:Number,
+    Books:[],
+  
 });
 
 module.exports=mongoose.model('book',BookSchema);
