@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
-const Book=require('../models/Book');
+const Group=require('../models/Group');
 const Schema=mongoose.Schema;
-const BookSchema=mongoose.Schema({
+const GroupSchema=mongoose.Schema({
     group_id:Schema.Types.ObjectId,
     name:{
         type:String,
@@ -11,4 +11,4 @@ const BookSchema=mongoose.Schema({
   
 });
 
-module.exports=mongoose.model('book',BookSchema);
+module.exports=mongoose.model('group',GroupSchema);

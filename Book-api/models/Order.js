@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
-const Book=require('../models/Book');
+const Order=require('../models/Order');
 const Schema=mongoose.Schema;
-const BookSchema=mongoose.Schema({
+const OrderSchema=mongoose.Schema({
     order_id:Schema.Types.ObjectId,
     Books:[String],
     user_id:String,
@@ -9,4 +9,4 @@ const BookSchema=mongoose.Schema({
     date:Date,
 });
 
-module.exports=mongoose.model('book',BookSchema);
+module.exports=mongoose.model('order',OrderSchema);
