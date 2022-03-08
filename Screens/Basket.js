@@ -25,13 +25,13 @@ export default function Basket(props) {
   const [sepet1,setSepet]=useState([sepet])
   let tutar = 0;
   useEffect(() => {
-    console.log(sepet1.length)
-  }, [sepet1]);
+    setLoading(false);
+  });
 
-  const lod = async () => {
-    
-    return "a";
+  const lod =  () => {
+    setLoading(true);
   };
+  
   const addBasket = (aa) => {
     const removeIndex = sepet.findIndex((item) => item.id === aa.id);
     console.log(removeIndex);
@@ -58,11 +58,15 @@ export default function Basket(props) {
   return (
     <View>
       {isLoading ? (
-        <ActivityIndicator />
+        <View>
+          <ActivityIndicator />
+          <ActivityIndicator />
+          <ActivityIndicator />
+        </View>
       ) : (
         <ScrollView>
           <View style={styles.card}>
-            {sepet1.map((item, index) => (
+            {sepet.map((item, index) => (
               <Urun
                 key={item.id}
                 id={item.id}
