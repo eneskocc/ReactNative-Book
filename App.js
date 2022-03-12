@@ -26,6 +26,10 @@ import BookDetay from "./Screens/BookDetay";
 import Books from "./Screens/Books";
 import Search from "./Screens/Search";
 import Home from "./Screens/Home";
+
+
+import { Provider } from 'react-redux'
+
 function HomeScreen() {
   return (
     <Home />
@@ -100,7 +104,7 @@ export default function App() {
  
   
   return (
-    <CartContextProvider value={sepet}>
+    <Provider >
    
     
     <NavigationContainer>
@@ -179,7 +183,7 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
-    </CartContextProvider>
+    </Provider>
   );
 }
 
