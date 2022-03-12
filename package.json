@@ -28,7 +28,8 @@
     "react-native-slide-modal": "^0.0.32",
     "react-native-swiper": "^1.6.0-rc.3",
     "react-native-web": "0.17.1",
-    "react-native-web-swiper": "^2.2.3"
+    "react-native-web-swiper": "^2.2.3",
+    "redux": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

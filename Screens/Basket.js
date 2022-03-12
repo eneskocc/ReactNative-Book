@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   FlatList,
+  SafeAreaView
 } from "react-native";
 import React, {
   Component,
@@ -22,9 +23,11 @@ import { CartContext } from "../context/CartContext";
 export default function Basket(props) {
   const [isLoading, setLoading] = useState(true);
   const sepet = useContext(CartContext);
-  const [sepet1,setSepet]=useState([sepet])
+  const [sepet1,setSepet]=useState([sepet]);
+  
   let tutar = 0;
   useEffect(() => {
+    console.log(sepet);
     setLoading(false);
   });
 
@@ -56,13 +59,9 @@ export default function Basket(props) {
   };
   
   return (
-    <View>
+    <SafeAreaView>
       {isLoading ? (
-        <View>
-          <ActivityIndicator />
-          <ActivityIndicator />
-          <ActivityIndicator />
-        </View>
+        <ActivityIndicator /> 
       ) : (
         <ScrollView>
           <View style={styles.card}>
@@ -94,7 +93,7 @@ export default function Basket(props) {
           </View>
         </ScrollView>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
