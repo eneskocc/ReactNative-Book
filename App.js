@@ -1,4 +1,4 @@
-import React, { useState ,useContext, createContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 
 import {
   View,
@@ -18,7 +18,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
-
+import { MaterialIcons } from "@expo/vector-icons";
 
 import Login from "./Screens/Login";
 import Basket from "./Screens/Basket";
@@ -26,13 +26,14 @@ import BookDetay from "./Screens/BookDetay";
 import Books from "./Screens/Books";
 import Search from "./Screens/Search";
 import Home from "./Screens/Home";
-import { store } from './store/store';
-import { Provider } from 'react-redux';
+import Favorite from "./Screens/Favorite";
+
+
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 
 function HomeScreen() {
-  return (
-    <Home />
-  );
+  return <Home />;
 }
 
 function Article() {
@@ -54,12 +55,8 @@ function LoginScreen() {
   return <Login />;
 }
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
+function FavoriteScreen() {
+  return <Favorite />;
 }
 
 const HomeStack = createNativeStackNavigator();
@@ -99,92 +96,85 @@ function BasketStackScreen() {
 const Tab = createBottomTabNavigator();
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
- 
-  
-  return (  
+
+  return (
     <Provider store={store}>
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen
-          name="Home"
-          component={HomeStackScreen}
-          options={{
-            tabBarLabel: "Home",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons
-                name="home"
-                color={"black"}
-                style={styles.icons}
-                size={24}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Search"
-          component={SearchScreen}
-          options={{
-            tabBarLabel: "Search",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons
-                name="ios-search"
-                size={24}
-                style={styles.icons}
-                color="black"
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name=" "
-          component={BasketStackScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <View style={styles.iconsAdd}>
-                <FontAwesome name="shopping-basket" size={26} color="white" />
-                <Text style={styles.iconsAddText}>140</Text>
-              </View>
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Messages"
-          component={SettingsScreen}
-          options={{
-            tabBarLabel: "Message",
-            tabBarIcon: ({ color, size }) => (
-              <AntDesign
-                name="message1"
-                size={24}
-                style={styles.icons}
-                color="black"
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Settings"
-          component={LoginScreen}
-          options={{
-            tabBarLabel: "Home",
-            tabBarIcon: ({ color, size }) => (
-              <AntDesign
-                name="profile"
-                size={24}
-                style={styles.icons}
-                color="black"
-              />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
+          <Tab.Screen
+            name="Home"
+            component={HomeStackScreen}
+            options={{
+              tabBarLabel: "Home",
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons
+                  name="home"
+                  color={"black"}
+                  style={styles.icons}
+                  size={24}
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Search"
+            component={SearchScreen}
+            options={{
+              tabBarLabel: "Search",
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons
+                  name="ios-search"
+                  size={24}
+                  style={styles.icons}
+                  color="black"
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name=" "
+            component={BasketStackScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <View style={styles.iconsAdd}>
+                  <FontAwesome name="shopping-basket" size={26} color="white" />
+                  <Text style={styles.iconsAddText}>140</Text>
+                </View>
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Favorite"
+            component={FavoriteScreen}
+            options={{
+              tabBarLabel: "Favorite",
+              tabBarIcon: ({ color, size }) => (
+                <MaterialIcons name="favorite-border" size={26} color="black" />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={LoginScreen}
+            options={{
+              tabBarLabel: "Home",
+              tabBarIcon: ({ color, size }) => (
+                <AntDesign
+                  name="profile"
+                  size={24}
+                  style={styles.icons}
+                  color="black"
+                />
+              ),
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }
 
 const styles = StyleSheet.create({
- 
   iconsAdd: {
     position: "relative",
     width: 60,
@@ -199,5 +189,5 @@ const styles = StyleSheet.create({
   iconsAddText: {
     color: "#fafafa",
     paddingVertical: 10,
-  }
+  },
 });

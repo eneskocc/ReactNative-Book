@@ -1,10 +1,23 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React ,{useState}from 'react'
 import { useNavigation } from '@react-navigation/native';
-
+import { MaterialIcons } from '@expo/vector-icons';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  decrementFAV,
+  increment,
+  incrementFAV,
+  incrementByAmount,
+  incrementAsync,
+  incrementIfOdd,
+  selectCount,
+  selectObje,
+} from '../reducers/counterSlice';
 export default function BookCard(props) {
   const { sepet } = props;
+  const [icon, setIcon] = useState(true);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   function irCatalogo() {
     navigation.navigate('Details', {
       props: props,
@@ -31,7 +44,17 @@ export default function BookCard(props) {
           <Text style={styles.textPrice}>{props.price} TL</Text>
           <Text style={styles.textNewPrice}>{newPrice} TL</Text>
         </View>
-
+       
+        
+      {icon ? (
+        <TouchableOpacity onPress={() => dispatch(incrementFAV(props))}>
+        <MaterialIcons name="favorite-border" size={26} color="black" style={{paddingTop:5}} />
+      </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={() => () => setIcon(false)}>
+          <MaterialIcons name="favorite" size={26} color="black" style={{paddingTop:5}}/>
+        </TouchableOpacity>
+      )}
       </View>
 
      
