@@ -1,34 +1,7 @@
 # ReactNative-Market
-
-# book-api
-enes koç
-
-# Movies
-
-| Route | HTTP Verb	 | POST body	 | Description	 |
-| --- | --- | --- | --- |
-| /api/movies | `GET` | Empty | List all movies. |
-| /api/movies | `POST` | {'title':'foo', 'category':'bar', 'country':'Turkey', year:1990, director:"id", imdb_score: 9.7 } | Create a new movie. |
-| /api/movies/:movie_id | `GET` | Empty | Get a movie. |
-| /api/movies/:movie_id | `PUT` | {'name':'foo', 'surname':'bar'} | Update a movie with new info. |
-| /api/movies/:movie_id | `DELETE` | Empty | Delete a movie. |
-| /api/movies/top10 | `GET` | Empty | Get the top 10 movies. |
-| /api/movies/between/:start_year/:end_year | `GET` | Empty | Movies between two dates. |
-
-# Directors
-
-| Route | HTTP Verb	 | POST body	 | Description	 |
-| --- | --- | --- | --- |
-| /api/directors | `GET` | Empty | List all directors. |
-| /api/directors | `POST` | { name: 'foo', surname:'bar', bio:'lorem ipsum' } | Create a new director. |
-| /api/directors/:director_id | `GET` | Empty | Get a director. |
-| /api/directors/:director_id | `PUT` | {'name':'foo', 'surname':'bar', 'bio': 'lorem'} | Update a director with new info. |
-| /api/directors/:director_id | `DELETE` | Empty | Delete a director. |
-| /api/directors/:director_id/best10movie | `GET` | Empty | The director's top 10 films. |
-
-# Index
-
-| Route | HTTP Verb	 | POST body	 | Description	 |
-| --- | --- | --- | --- |
-| /register | `POST` | { username: 'foo', password:'1234' } | Create a new user. |
-| /authenticate | `POST` | { username: 'foo', password:'1234' } | Generate a token. |
+![Simulator Screen Shot - iPhone 11 - 2022-03-13 at 22 37 29](https://user-images.githubusercontent.com/32553624/158076183-249400fb-103a-4f8f-ac60-d8d0654600ce.png)
+![Simulator Screen Shot - iPhone 11 - 2022-03-13 at 22 37 32](https://user-images.githubusercontent.com/32553624/158076186-7bbd925b-ba9d-4b7f-9ac3-cc0c9053a615.png)
+![Simulator Screen Shot - iPhone 11 - 2022-03-13 at 22 37 41](https://user-images.githubusercontent.com/32553624/158076187-e12f4778-1ae6-4d98-8dba-14f10a150fb8.png)
+![Simulator Screen Shot - iPhone 11 - 2022-03-13 at 22 37 50](https://user-images.githubusercontent.com/32553624/158076189-b31c4139-df87-4f57-b1ab-2c530776441a.png)
+![Simulator Screen Shot - iPhone 11 - 2022-03-13 at 22 37 58](https://user-images.githubusercontent.com/32553624/158076190-2ca0eb08-633e-45b8-b334-f4b1f31576c7.png)
+![Simulator Screen Shot - iPhone 11 - 2022-03-13 at 22 38 08](https://user-images.githubusercontent.com/32553624/158076192-26e27070-75a6-46ee-b247-4aa79e0afd06.png)
