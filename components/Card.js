@@ -24,10 +24,12 @@ export default function Card(props) {
 const styles = StyleSheet.create({
   Contanair: {
     alignItems:'center',
-    width: 100,
-    margin: 11,
+    width: 120,
+    height:180,
+    margin:5,
     borderRadius: 5,
-    padding: 10,
+    paddingHorizontal:10,
+    paddingVertical:15,
     backgroundColor: '#9DD6EB',
     
    
@@ -37,8 +39,8 @@ const styles = StyleSheet.create({
     alignContent:'center',
   },
    tinyLogo: {
-    width: 60,
-    height: 80,
+    width: 70,
+    height: 92,
 
   },
   text: {

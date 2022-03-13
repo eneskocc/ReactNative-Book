@@ -39,9 +39,10 @@ const styles = StyleSheet.create({
     width: windowWidth,
     flexWrap: "wrap",
     flexDirection: "row",
-    paddingHorizontal: 20,
-    paddingVertical: 15,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
     alignItems: "center",
+    alignContent:'center',
     backgroundColor: "#fafafa",
   },
   coksatan: {
