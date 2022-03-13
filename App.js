@@ -1,5 +1,5 @@
 import React, { useState ,useContext, createContext } from "react";
-import CartContextProvider from "./context/CartContext";
+
 import {
   View,
   TouchableOpacity,
@@ -28,7 +28,6 @@ import Search from "./Screens/Search";
 import Home from "./Screens/Home";
 
 
-import { Provider } from 'react-redux'
 
 function HomeScreen() {
   return (
@@ -100,13 +99,9 @@ function BasketStackScreen() {
 const Tab = createBottomTabNavigator();
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
-  const sepet = useContext(CartContextProvider);
  
   
-  return (
-    <Provider >
-   
-    
+  return (  
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen
@@ -183,7 +178,7 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
-    </Provider>
+ 
   );
 }
 

@@ -7,6 +7,16 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  incrementAsync,
+  incrementIfOdd,
+  selectCount,
+  selectObje,
+} from '../reducers/counterSlice';
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useNavigationParam } from "@react-navigation/native";
 import { Dimensions } from "react-native";
@@ -15,34 +25,9 @@ const windowHeight = Dimensions.get("window").height;
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { CartContext } from '../context/CartContext';
 export default function BookDetay(props) {
-  const sepet = useContext(CartContext);
   const obje = props.props.route.params.props;
-  console.log(obje);
-  const addBasket = () => {
-    const removeIndex = sepet.findIndex((item) => item.id === obje.id);
-    console.log(removeIndex);
-    if (removeIndex === -1) {
-      sepet.push(obje);
-    } else {
-      let obj = sepet[removeIndex];
-      sepet.splice(removeIndex, 1);
-      sepet.push({ ...obje, number: obj.number + 1 });
-    }
-  };
-  const deleteBasket = () => {
-    const removeIndex = sepet.findIndex((item) => item.id === obje.id);
-    let obj = sepet[removeIndex];
-    if (obj.number === 1) {
-      console.log(obj.number);
-      sepet.splice(removeIndex, 1);
-    } else {
-      sepet.splice(removeIndex, 1);
-      sepet.push({ ...obje, number: obj.number - 1 });
-    }
-  };
-  const goster = () => {
-    console.log(sepet);
-  };
+  const obje2 = useSelector(selectObje);
+  const dispatch = useDispatch();
   return (
     <ScrollView>
       <View
@@ -79,17 +64,17 @@ export default function BookDetay(props) {
             Award de melhor novela de 2002 e o Bram Stoker Award de melhor
             trabalho de novos escritores de 2002
           </Text>
-          <TouchableOpacity style={styles.btn1} onPress={goster}>
+          <TouchableOpacity style={styles.btn1} onPress={() => dispatch(incrementByAmount(' ENES ELİFİ SEVİYOR '))}>
             <Text style={styles.btnText}>goster</Text>
           </TouchableOpacity>
 
           <View style={styles.btnContanair}>
-            <TouchableOpacity style={styles.btn1} onPress={deleteBasket}>
+            <TouchableOpacity style={styles.btn1} onPress={() => dispatch(incrementByAmount(' ENES ELİFİ SEVİYOR '))}>
               <Text style={styles.btnText}>-</Text>
             </TouchableOpacity>
 
             <Text style={styles.Text}>Sepete Ekle</Text>
-            <TouchableOpacity style={styles.btn2} onPress={addBasket}>
+            <TouchableOpacity style={styles.btn2} onPress={() => dispatch(incrementByAmount(' ENES ELİFİ SEVİYOR '))}>
               <Text style={styles.btnText}>+</Text>
             </TouchableOpacity>
           </View>
