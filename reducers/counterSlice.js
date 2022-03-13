@@ -34,14 +34,29 @@ export const counterSlice = createSlice({
       state.value += 1;
       state.obje.push('ELİF');
     },
-    decrement: (state) => {
-      state.value -= 1;
-      state.obje.pop();
+    decrement: (state,action) => {
+        const removeIndex = state.obje.findIndex((item) => item.id === action.payload.id);
+        let obj = state.obje[removeIndex];
+        if (obj.number === 1) {
+          console.log(obj.number);
+          state.obje.splice(removeIndex, 1);
+        } else {
+            state.obje.splice(removeIndex, 1);
+            state.obje.push({ ...action.payload, number: obj.number - 1 });
+        }
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementByAmount: (state, action) => {
-      state.value += action.payload;
-      state.obje.push(action.payload);
+        const removeIndex = state.obje.findIndex((item) => item.id === action.payload.id);
+        
+        if (removeIndex === -1) {
+            state.obje.push(action.payload);
+        } else {
+          let obj = state.obje[removeIndex];
+          state.obje.splice(removeIndex, 1);
+          state.obje.push({ ...action.payload, number: obj.number + 1 });
+        }
+      
     },
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,

@@ -27,6 +27,7 @@ import { CartContext } from '../context/CartContext';
 export default function BookDetay(props) {
   const obje = props.props.route.params.props;
   const obje2 = useSelector(selectObje);
+  console.log(obje2);
   const dispatch = useDispatch();
   return (
     <ScrollView>
@@ -64,17 +65,14 @@ export default function BookDetay(props) {
             Award de melhor novela de 2002 e o Bram Stoker Award de melhor
             trabalho de novos escritores de 2002
           </Text>
-          <TouchableOpacity style={styles.btn1} onPress={() => dispatch(incrementByAmount(' ENES ELİFİ SEVİYOR '))}>
-            <Text style={styles.btnText}>goster</Text>
-          </TouchableOpacity>
-
+      
           <View style={styles.btnContanair}>
-            <TouchableOpacity style={styles.btn1} onPress={() => dispatch(incrementByAmount(' ENES ELİFİ SEVİYOR '))}>
+            <TouchableOpacity style={styles.btn1} onPress={() => dispatch(decrement(obje))}>
               <Text style={styles.btnText}>-</Text>
             </TouchableOpacity>
 
             <Text style={styles.Text}>Sepete Ekle</Text>
-            <TouchableOpacity style={styles.btn2} onPress={() => dispatch(incrementByAmount(' ENES ELİFİ SEVİYOR '))}>
+            <TouchableOpacity style={styles.btn2} onPress={() => dispatch(incrementByAmount(obje))}>
               <Text style={styles.btnText}>+</Text>
             </TouchableOpacity>
           </View>

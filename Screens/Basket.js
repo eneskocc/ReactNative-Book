@@ -20,14 +20,24 @@ import Urun from "../components/Urun";
 import BestSeller from "../components/BestSeller";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { CartContext } from "../context/CartContext";
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  incrementAsync,
+  incrementIfOdd,
+  selectCount,
+  selectObje,
+} from '../reducers/counterSlice';
 export default function Basket(props) {
   const [isLoading, setLoading] = useState(true);
-  const sepet = useContext(CartContext);
-  const [sepet1,setSepet]=useState([sepet]);
-  
+  const dispatch = useDispatch();
+  const obje2 = useSelector(selectObje);
+  console.log(obje2);
   let tutar = 0;
   useEffect(() => {
-    console.log(sepet);
+    
     setLoading(false);
   });
 
@@ -35,28 +45,7 @@ export default function Basket(props) {
     setLoading(true);
   };
   
-  const addBasket = (aa) => {
-    const removeIndex = sepet.findIndex((item) => item.id === aa.id);
-    console.log(removeIndex);
-    if (removeIndex === -1) {
-      sepet.push(aa);
-    } else {
-      let obj = sepet[removeIndex];
-      sepet.splice(removeIndex, 1);
-      sepet.push({ ...aa, number: obj.number + 1 });
-    }
-  };
-  const deleteBasket = (aa) => {
-    const removeIndex = sepet.findIndex((item) => item.id === aa.id);
-    let obj = sepet[removeIndex];
-    if (obj.number === 1) {
-      console.log(obj.number);
-      sepet.splice(removeIndex, 1);
-    } else {
-      sepet.splice(removeIndex, 1);
-      sepet.push({ ...aa, number: obj.number - 1 });
-    }
-  };
+  
   
   return (
     <SafeAreaView>
@@ -65,7 +54,7 @@ export default function Basket(props) {
       ) : (
         <ScrollView>
           <View style={styles.card}>
-            {sepet.map((item, index) => (
+            {obje2.map((item, index) => (
               <Urun
                 key={item.id}
                 id={item.id}
@@ -75,15 +64,14 @@ export default function Basket(props) {
                 newPrice={item.newPrice}
                 discount={item.discount}
                 number={item.number}
-                sepet={sepet}
-                addBasket={addBasket}
-                deleteBasket={deleteBasket}
+                addBasket={() => dispatch(incrementByAmount(item))}
+                deleteBasket={() => dispatch(decrement(item))}
               />
             ))}
            
           </View>
           <TouchableOpacity style={styles.btnContanair} onPress={lod}>
-            <Text style={styles.btnText}>Siparişi tamamla {sepet.forEach(e => {
+            <Text style={styles.btnText}>Siparişi tamamla {obje2.forEach(e => {
       tutar=tutar+(e.newPrice*e.number);
     })} {tutar} TL</Text>
           </TouchableOpacity>

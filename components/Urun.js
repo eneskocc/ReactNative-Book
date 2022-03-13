@@ -1,6 +1,7 @@
 import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types'
+
 export default function Urun(props) {
     const [count, setCount] = useState(0); 
     const { sepet } = props;
@@ -27,11 +28,11 @@ export default function Urun(props) {
             </View>
 
             <View style={styles.end}>
-                <TouchableOpacity onPress={props.addBasket(obje)}>
+                <TouchableOpacity onPress={props.addBasket} >
                     <Text style={styles.endText}>+</Text>
                 </TouchableOpacity>
                 <Text style={styles.endText}>{props.number}</Text>
-                <TouchableOpacity onPress={props.deleteBasket(obje)}>
+                <TouchableOpacity onPress={props.deleteBasket}>
                     <Text style={styles.endText}>-</Text>
                 </TouchableOpacity>
             </View>

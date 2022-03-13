@@ -26,8 +26,8 @@ import BookDetay from "./Screens/BookDetay";
 import Books from "./Screens/Books";
 import Search from "./Screens/Search";
 import Home from "./Screens/Home";
-
-
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 function HomeScreen() {
   return (
@@ -102,6 +102,7 @@ export default function App() {
  
   
   return (  
+    <Provider store={store}>
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen
@@ -178,7 +179,7 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
- 
+    </Provider>
   );
 }
 
