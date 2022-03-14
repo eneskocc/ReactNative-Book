@@ -7,67 +7,101 @@ const BestSeller = () => {
     const foto = [
 
         {
-            id: '1',
-            name: 'amok kosucusu',
-            src: require('../img/amok-kosucusu.jpeg'),
+            id: 1,
+            name: "amok kosucusu",
+            src: require("../img/amok-kosucusu.jpeg"),
             price: 24,
             discount: 45,
-        },
-        {
-            id: '2',
-            name: 'Sineklerin Tanrısı',
-            src: require('../img/sineklerin-tanrisi.jpeg'),
+            newPrice: 0,
+            number: 1,
+          },
+          {
+            id: 2,
+            name: "Sineklerin Tanrısı",
+            src: require("../img/sineklerin-tanrisi.jpeg"),
             price: 20,
             discount: 5,
-        },
-        {
-            id: '3',
-            name: 'satranc',
-            src: require('../img/satranc.jpeg'),
+            newPrice: 0,
+            number: 1,
+          },
+          {
+            id: 3,
+            name: "satranc",
+            src: require("../img/satranc.jpeg"),
             price: 10,
             discount: 15,
-        },
-        {
-            id: '4',
-            name: 'devlet  ',
-            src: require('../img/devlet.jpeg'),
-            price: '19',
+            newPrice: 0,
+            number: 1,
+          },
+          {
+            id: 4,
+            name: "devlet  ",
+            src: require("../img/devlet.jpeg"),
+            price: "19",
             discount: 35,
-        },
-        {
-            id: '5',
-            name: 'hayvan cifliği',
-            src: require('../img/hayvan-ciftligi.jpeg'),
+            newPrice: 0,
+            number: 1,
+          },
+          {
+            id: 5,
+            name: "hayvan cifliği",
+            src: require("../img/hayvan-ciftligi.jpeg"),
             price: 12,
             discount: 45,
-        },
-        {
-            id: '6',
-            name: 'satranc',
-            src: require('../img/satranc.jpeg'),
+            newPrice: 0,
+            number: 1,
+          },
+          {
+            id: 6,
+            name: "satranc",
+            src: require("../img/satranc.jpeg"),
             price: 45,
             discount: 40,
-        },
-        {
-            id: '7',
-            name: 'devlet',
-            src: require('../img/devlet.jpeg'),
+            newPrice: 0,
+            number: 1,
+          },
+          {
+            id: 7,
+            name: "devlet",
+            src: require("../img/devlet.jpeg"),
             price: 30,
             discount: 55,
-        },
-        {
-            id: '8',
-            name: 'hayvan cifliği',
-            src: require('../img/hayvan-ciftligi.jpeg'),
+            newPrice: 0,
+            number: 1,
+          },
+          {
+            id: 8,
+            name: "hayvan cifliği",
+            src: require("../img/hayvan-ciftligi.jpeg"),
             price: 69,
             discount: 30,
-        }
+            newPrice: 0,
+            number: 1,
+          },
+          {
+            id: 9,
+            name: "devlet  ",
+            src: require("../img/devlet.jpeg"),
+            price: "19",
+            discount: 35,
+            newPrice: 0,
+            number: 1,
+          },
     ];
     return (
         <ScrollView horizontal={true}>
             {
                 foto.map((item, index) => (
-                    <BookCard key={item.id} name={item.name} img={item.src} price={item.price} discount={item.discount} />
+                    <BookCard
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    img={item.src}
+                    price={item.price}
+                    discount={item.discount}
+                    number={item.number}
+                    newPrice={item.price - (item.price * item.discount) / 100}
+                  />
                 ))
             }
         </ScrollView>

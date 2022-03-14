@@ -72,14 +72,14 @@ export const counterSlice = createSlice({
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     incrementFAV: (state, action) => {
-        const removeIndex = state.obje.findIndex((item) => item.id === action.payload.id);
+        const removeIndex = state.favorite.findIndex((item) => item.id === action.payload.id);
         
         if (removeIndex === -1) {
-            state.obje.push(action.payload);
+            state.favorite.push(action.payload);
         } else {
-          let obj = state.obje[removeIndex];
-          state.obje.splice(removeIndex, 1);
-          state.obje.push({ ...action.payload, number: obj.number + 1 });
+          let obj = state.favorite[removeIndex];
+          state.favorite.splice(removeIndex, 1);
+          state.favorite.push({ ...action.payload, number: obj.number + 1 });
         }
       
     },

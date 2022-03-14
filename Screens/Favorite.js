@@ -18,7 +18,7 @@ const windowWidth = Dimensions.get("window").width;
 import BookCard from "../components/BookCard";
 const Favorite = () => {
   const dispatch = useDispatch();
-  const obje2 = useSelector(selectObje);
+  const obje2 = useSelector(selectFavorite);
   return (
     <SafeAreaView>
       <ScrollView>
