@@ -93,6 +93,17 @@ function BasketStackScreen() {
   );
 }
 
+const FavoriteStack = createNativeStackNavigator();
+
+function  FavoriteStackScreen() {
+  return (
+    <FavoriteStack.Navigator>
+      <FavoriteStack.Screen name="Favorite" component={FavoriteScreen} />
+      <FavoriteStack.Screen name="Details" component={LoginScreen} />
+    </FavoriteStack.Navigator>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -145,7 +156,7 @@ export default function App() {
           />
           <Tab.Screen
             name="Favorite"
-            component={FavoriteScreen}
+            component={FavoriteStackScreen}
             options={{
               tabBarLabel: "Favorite",
               tabBarIcon: ({ color, size }) => (
